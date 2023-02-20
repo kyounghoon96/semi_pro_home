@@ -1,0 +1,48 @@
+@charset "UTF-8";
+.field-main{
+    width: 500px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:lightgray;
+}
+
+.myinfo-legend{
+	font-weight: bolder;
+	font-size: 20px;
+	color: blue;
+}
+
+.myinfo-label{
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+.myinfo-div1{
+	width:140px;
+	display: inline-block;
+	position: relative;
+	
+}
+.myinfo-div2{
+	width:250px;
+	display: inline-block;
+}
+
+.myinfo-div2 input{
+	height: 20px;	
+}
+.myinfo-div2 p{
+	line-height:0.1px;
+	margin:2px;
+}
+#input-address{
+	height: 30px;
+}
+.myinfo-href{
+	text-align:right;
+}
+
+.myinfo-href a{
+	text-decoration: none;
+	color: blue;
+}
