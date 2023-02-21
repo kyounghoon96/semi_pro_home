@@ -58,6 +58,27 @@ public class BoardDao {
 		}
 		return result;
 	}
+
+	public int getAddList(Connection conn, BoardVo vo) {
+		int result = 0;
+		
+		String query="insert into board values((select nvl(max(board_num),0) +1 from board),"
+					+ "? ,?, ?, default)";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, vo.getBoardTitle());
+			pstmt.setString(2, vo.getBoardWriter());
+			pstmt.setString(3, vo.getBoardContent());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}		
+		return result;
+	}
 	
 
 }

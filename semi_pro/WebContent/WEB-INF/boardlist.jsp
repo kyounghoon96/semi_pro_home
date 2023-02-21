@@ -16,14 +16,24 @@
 			<td>작성자</td>
 			<td>작성시간</td>	
 		</tr>	
-		<c:forEach items="${boardlist }" var="vo">
+		<c:forEach items="${boardlist }" var="vo" >
 			<tr>
 				<td>${vo.boardNum }</td>
 				<td><a href="<%=request.getContextPath() %>/boardtext">${vo.boardTitle }</a></td>
 				<td>${vo.boardWriter }</td>
 				<td>${vo.boardDate }</td>
 			</tr>
-		</c:forEach>	
+		</c:forEach>		
 	</table>
+	<button onclick="location.href='<%=request.getContextPath()%>/boardadd'">글 추가하기</button>		
+	<script>
+	$(".btn.add").on("click", btnadd)
+	function btnadd(){
+		alert("글작성 페이지로 이동합니다.");
+		location.href="<%=request.getContextPath() %>/boardadd";	
+	}	
+	</script>
+	
+	
 </body>
 </html>
