@@ -25,7 +25,9 @@
 			</tr>
 		</c:forEach>		
 	</table>
-	<button onclick="location.href='<%=request.getContextPath()%>/boardadd'">글 추가하기</button>		
+	<button onclick="location.href='<%=request.getContextPath()%>/boardadd'">글 추가하기</button>
+	<br>
+	<button onclick="location.href='<%=request.getContextPath()%>/boardupdate'">글 수정하기</button>			
 	<script>
 	$(".btn.add").on("click", btnadd)
 	function btnadd(){

@@ -30,5 +30,21 @@ public class BoardService {
 		JDBCTemplate.close(conn);		
 		return result;	
 	}
+	
+	public int getUpdateList(BoardVo vo) {
+		int result = 0;
+		Connection conn = JDBCTemplate.getConnection();
+		result = new BoardDao().getUpdateList(conn, vo);		
+		JDBCTemplate.close(conn);			
+		return result;
+	}
+	
+	public BoardVo getBoardCheck(BoardVo vo) {
+		BoardVo result = null;
+		Connection conn = JDBCTemplate.getConnection();
+		result = new BoardDao().getBoardCheck(conn, vo);		
+		JDBCTemplate.close(conn);		
+		return result;
+	}
 
 }

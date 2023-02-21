@@ -1,11 +1,6 @@
 package se.board.model.controller;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,42 +11,37 @@ import se.board.model.vo.BoardService;
 import se.board.model.vo.BoardVo;
 
 /**
- * Servlet implementation class BoardaddController
+ * Servlet implementation class BoardUpdateController
  */
-@WebServlet("/boardadd")
-public class BoardaddController extends HttpServlet {
+@WebServlet("/boardupdate")
+public class BoardUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardaddController() {
+    public BoardUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/boardadd.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("/WEB-INF/boardupdate.jsp").forward(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");		
-		
+		request.setCharacterEncoding("UTF-8");	
 		BoardVo vo = new BoardVo();
 		vo.setBoardTitle(request.getParameter("title"));
 		vo.setBoardWriter(request.getParameter("writer"));
 		vo.setBoardContent(request.getParameter("content"));
-		int result = new BoardService().getAddList(vo);
 		
+		int result = new BoardService().getUpdateList(vo);
 		if(result > 0) {
-			response.sendRedirect(request.getContextPath()+"/boardlist");
+			response.sendRedirect(request.getContextPath() + "/boardlist");		
 		} else {
-			request.setAttribute("msg", "게시글에 등록 실패하였습니다");
-			request.getRequestDispatcher("/WEB-INF/Alertmsg.jsp").forward(request, response);
+			request.setAttribute("msg", "게시글 수정에 실패하였습니다.");
+			response.sendRedirect(request.getContextPath() + "/boardlist");
 		}
 		
 	}
